@@ -1,8 +1,10 @@
 pragma solidity ^0.5.13;
 
-contract SimpleWallet {
+import "Ownable.sol";
 
-  function withdrawMoney(address payable _to, uint _amount) public {
+contract SimpleWallet is Ownable {
+
+  function withdrawMoney(address payable _to, uint _amount) public onlyOwner {
     _to.transfer(_amount);
   }
 
